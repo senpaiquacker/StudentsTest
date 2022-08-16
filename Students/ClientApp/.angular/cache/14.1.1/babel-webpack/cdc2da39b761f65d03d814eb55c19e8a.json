@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class StudentInfo {\n  constructor(secondName, name, FatherName, DateOfBirth, group) {\n    this.secondName = secondName;\n    this.name = name;\n    this.FatherName = FatherName;\n    this.DateOfBirth = DateOfBirth;\n    this.group = group;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

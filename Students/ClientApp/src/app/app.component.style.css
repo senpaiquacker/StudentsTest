@@ -1,0 +1,13 @@
+﻿h2 {
+    font-family: Verdana;
+    font-size: 24px;
+    color: green;
+    width: 50%;
+    margin: 0 auto;
+}
+table {
+    width: 100%;
+}
+th {
+    font: bold;
+}

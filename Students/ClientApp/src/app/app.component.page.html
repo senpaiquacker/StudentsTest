@@ -1,0 +1,5 @@
+﻿<input type="button" value="Группы" *ngIf="!opengroup()" (click)="setmenutogroups()" />
+<groups *ngIf="opengroup()"></groups>
+<faculty-form (onFacultySavedOrCanceled)="onFormClose($event)" *ngIf="facultyToggle" >Загрузка</faculty-form>
+<input type="button" value="Добавить факультет" *ngIf="!facultyToggle" (click)="openfacultyform()" />
+<input type="button" *ngIf="!openmain()" (click)="gettomainmenu()" value="Вернуться в меню" />

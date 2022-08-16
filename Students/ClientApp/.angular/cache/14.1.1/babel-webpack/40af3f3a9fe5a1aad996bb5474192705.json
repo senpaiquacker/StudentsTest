@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class FacultyGroup {\n  constructor(group, facultyName, facultyCode) {\n    this.group = group;\n    this.facultyName = facultyName;\n    this.facultyCode = facultyCode;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

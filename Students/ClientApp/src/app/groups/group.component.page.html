@@ -1,0 +1,37 @@
+﻿<button (click)="loadGroups()">Перезагрузить</button>
+<button (click)="addGroup()">Добавить группу</button>
+<table border="1" resource="">
+    <thead>
+        <tr>
+            <td>Номер группы</td>
+            <td>Факультет</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let g of groups; let i = index" id="{{i}}" style="height: 20px">
+            <ng-template [ngIf]="!editable[i]" [ngIfElse]="edit">
+                <td (click)="selectGroup(i)">{{g?.facultyCodeId}}-{{g?.group}}</td>
+                <td (click)="selectGroup(i)">{{getFacultyName(g?.facultyCodeId)}}</td>
+                <td>
+                    <input type="button" value="Удалить группу" (click)="deleteGroup(i)" />
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<ng-template [ngIf]="contentError"><p style="color:red">Поля должны быть полными</p></ng-template>
+<ng-template #edit>
+    <td>
+        <span>{{edited?.facultyCodeId}}-</span>
+        <input type="text" [(ngModel)]="edited.group" class="form-control" />
+    </td>
+    <td>
+        <select id="faculty" [(ngModel)]="edited.facultyCodeId">
+            <option *ngFor="let f of faculties;" value="{{f.facultyCode}}">{{f.facultyName}}</option>
+        </select>
+    </td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" />
+        <input type="button" value="Удалить группу" (click)="deleteGroup(i)" />
+    </td>
+</ng-template>

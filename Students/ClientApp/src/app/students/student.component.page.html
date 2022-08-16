@@ -1,0 +1,39 @@
+﻿<button (click)="loadStudents()">Перезагрузить</button>
+<button (click)="addStudent()">Добавить группу</button>
+<table border="1" resource="">
+    <thead>
+        <tr>
+            <td>ФИО</td>
+            <td>Дата рождения</td>
+            <td>Группа</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students; let i = index" id="{{i}}" style="height: 20px">
+            <ng-template [ngIf]="!editable[i]" [ngIfElse]="edit">
+                <td (click)="selectStudent(i)">{{s?.secondName}} {{s?.name}} {{s?.fatherName}}</td>
+                <td (click)="selectStudent(i)">{{s?.dateOfBirth}}</td>
+                <td (click)="selectStudent(i)">{{getGroupString(s?.group)}}</td>
+                <td>
+                    <input type="button" value="Удалить студента" (click)="deleteStudent(i)" />
+                </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<ng-template [ngIf]="contentError"><p style="color:red">Поля должны быть полными</p></ng-template>
+<ng-template #edit>
+    <td>
+        <input type="text" [(ngModel)]="edited.secondName" class="form-control" style="display:inline-block" />
+        <input type="text" [(ngModel)]="edited.name" class="form-control" style="display:inline-block" />
+        <input type="text" [(ngModel)]="edited.fatherName" class="form-control" style="display:inline-block" />
+    </td>
+    <td>
+        <input type="date" [(ngModel)]="edited.date" class="form-control" />
+    </td>
+    <td></td>
+    <td>
+        <input type="button" value="Сохранить" (click)="save()" />
+        <input type="button" value="Удалить студента" (click)="deleteStudent(i)" />
+    </td>
+</ng-template>
